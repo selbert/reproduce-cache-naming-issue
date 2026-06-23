@@ -1,0 +1,23 @@
+package ch.postfinance.reproducer;
+
+import io.quarkus.cache.runtime.CacheConfig;
+import io.quarkus.logging.Log;
+import io.quarkus.runtime.Quarkus;
+import io.quarkus.runtime.StartupEvent;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
+
+@io.quarkus.runtime.annotations.QuarkusMain
+public class QuarkusMain {
+
+    static void main() {
+        Quarkus.run();
+    }
+
+    @Inject
+    CacheConfig config;
+
+    void startup(@Observes StartupEvent startupEvent) {
+        Log.infof(config.caffeine().cachesConfig().keySet().toString());
+    }
+}

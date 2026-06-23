@@ -1,0 +1,5 @@
+quarkus:
+  cache:
+    caffeine:
+      test-cache:
+        expire-after-write: 10m
