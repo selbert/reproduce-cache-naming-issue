@@ -18,6 +18,10 @@ public class QuarkusMain {
     CacheConfig config;
 
     void startup(@Observes StartupEvent startupEvent) {
+        // application.yaml has config for test-cache
+        // .env should override config but created a new cache config named test.cache
         Log.infof(config.caffeine().cachesConfig().keySet().toString());
+        // Expected result: [test-cache]
+        // Effective esult: [test.cache, test-cache]
     }
 }
