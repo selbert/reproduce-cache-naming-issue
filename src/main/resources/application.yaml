@@ -1,5 +1,5 @@
 quarkus:
   cache:
     caffeine:
-      test-cache:
+      "test-cache":
         expire-after-write: 10m
